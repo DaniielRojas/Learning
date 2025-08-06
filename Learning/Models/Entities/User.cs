@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Learning.Models
+namespace Learning.Models.Entities
 {
     [Table("user")]
     public class User

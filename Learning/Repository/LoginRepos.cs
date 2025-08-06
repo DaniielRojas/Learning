@@ -1,5 +1,6 @@
-﻿using Learning.Data;
-using Learning.Models;
+﻿using Learning.Custom;
+using Learning.Data;
+using Learning.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Learning.Repository
@@ -7,10 +8,12 @@ namespace Learning.Repository
     public class LoginRepos : ILoginRepos
     {
         private readonly DataContext _db;
+       
 
         public LoginRepos(DataContext db)
         {
             _db = db;
+            
         }
 
         public async Task<(bool Success, string Message, User? User)> Login(string usernameoremail, string password)
@@ -28,6 +31,7 @@ namespace Learning.Repository
                     return (false, "La contraseña es incorrecta.", null);
 
                 return (true, $"Bienvenido, {user.FirstName}", user);
+
             }
             catch (Exception ex)
             {

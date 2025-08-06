@@ -1,4 +1,4 @@
-﻿using Learning.Models;
+﻿using Learning.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 namespace Learning.Data
 {

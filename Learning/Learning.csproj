@@ -25,4 +25,12 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\Enums\" />
+    <Folder Include="Security\Interfaces\" />
+    <Folder Include="Security\Filters\" />
+    <Folder Include="Security\Extensions\" />
+    <Folder Include="Security\Services\" />
+  </ItemGroup>
+
 </Project>

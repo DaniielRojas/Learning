@@ -1,4 +1,4 @@
-﻿using Learning.Models;
+﻿using Learning.Models.Entities;
 
 namespace Learning.Repository
 {

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using BCrypt.Net;
 using Learning.Data;
-using Learning.Models;
 using Learning.Models.Dtos;
+using Learning.Models.Entities;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;

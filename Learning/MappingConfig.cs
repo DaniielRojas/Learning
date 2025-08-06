@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Learning.Models;
 using Learning.Models.Dtos;
+using Learning.Models.Entities;
 
 namespace Learning
 {

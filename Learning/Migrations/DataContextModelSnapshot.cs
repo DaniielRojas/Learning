@@ -22,7 +22,7 @@ namespace Learning.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Learning.Models.User", b =>
+            modelBuilder.Entity("Learning.Models.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

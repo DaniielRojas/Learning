@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Azure;
+using Learning.Custom;
 using Learning.Models;
 using Learning.Models.Dtos;
 using Learning.Repository;
@@ -15,14 +16,16 @@ namespace Learning.Controllers
     {
         private readonly ILoginRepos _loginRepos;
         private readonly IMapper _mapper;
+        private readonly Utilities _utilities;
         protected ResponseDto _response;
 
 
-        public AuthController(ILoginRepos loginRepos, IMapper mapper)
+        public AuthController(ILoginRepos loginRepos, IMapper mapper, Utilities utilities)
         {
             _loginRepos = loginRepos;
             _mapper = mapper;
             _response = new ResponseDto();
+            _utilities = utilities;
         }
 
 
@@ -56,12 +59,17 @@ namespace Learning.Controllers
                 }
 
                 var userResponse = _mapper.Map<UserResponseDto>(user);
+                var token = _utilities.GenerateJWT(user!);
 
                 return Ok(new ResponseDto
                 {
                     IsSuccess = true,
                     DisplayMessage = message,
-                    Result = userResponse
+                    Result = new
+                    {
+                        User = userResponse,
+                        Token = token         
+                    }
                 });
 
             }catch (ArgumentException ex)
