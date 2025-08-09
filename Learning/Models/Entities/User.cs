@@ -14,8 +14,11 @@ namespace Learning.Models.Entities
         [Column("document_type_id")]
         public int DocumentTypeId { get; set; }
 
+        [ForeignKey("roles")]
         [Column("role_id")]
+        [Required]
         public int RoleId { get; set; }
+        public Role Role { get; set; }
 
         [Column("first_name")]
         [Required]
@@ -62,5 +65,6 @@ namespace Learning.Models.Entities
 
         [Column("deleted_at")]
         public DateTime? DeletedAt { get; set; }
+
     }
 }

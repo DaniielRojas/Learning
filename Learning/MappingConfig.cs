@@ -15,7 +15,25 @@ namespace Learning
                 config.CreateMap<UserResponseDto, CreateUserDto>();
                 config.CreateMap<CreateUserDto, UserResponseDto>();
                 config.CreateMap<User, UserResponseDto>();
-                config.CreateMap<UserResponseDto, User>();
+                config.CreateMap<UpdateUserDto, User>();
+
+
+                config.CreateMap<UpdateUserDto, User>()
+                     .ForAllMembers(opt => opt.Condition((src, dest, srcMember) =>
+                     {
+                         if (srcMember == null) return false;
+                         if (srcMember is string str)
+                         {
+                             return !string.IsNullOrWhiteSpace(str);
+                         }
+                         return true;
+                     }));
+                config.CreateMap<User, UpdateUserDto>();
+                config.CreateMap<UserResponseDto, UpdateUserDto>();
+                config.CreateMap<UpdateUserDto, UserResponseDto>();
+               
+
+
             });
 
             return mappingConfig;
