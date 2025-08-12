@@ -11,8 +11,11 @@ namespace Learning.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [ForeignKey("documents")]
         [Column("document_type_id")]
+        [Required]
         public int DocumentTypeId { get; set; }
+        public DocumentType DocumentType { get; set; }
 
         [ForeignKey("roles")]
         [Column("role_id")]

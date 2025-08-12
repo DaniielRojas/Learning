@@ -8,6 +8,7 @@ namespace Learning.Data
         public static void Initialize(DataContext context)
         {
             RoleSeeder.Seed(context);
+            DocumentTypeSeeder.Seed(context);
             context.Database.Migrate();
         }
     }

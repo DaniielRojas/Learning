@@ -11,9 +11,9 @@ namespace Learning.Data.Seeders
             if (!context.Roles.Any())
             {
                 context.Roles.AddRange(
-                    new Role { Name = "Admin" },
-                    new Role { Name = "Student" },
-                    new Role { Name = "Teacher" }
+                    new Role { Name = "Administrador" },
+                    new Role { Name = "Estudiante" },
+                    new Role { Name = "Instructor" }
                 );
                 context.SaveChanges();
             }

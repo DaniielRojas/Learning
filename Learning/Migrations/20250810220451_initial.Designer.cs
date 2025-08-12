@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Learning.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250809062914_first")]
-    partial class first
+    [Migration("20250810220451_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,25 @@ namespace Learning.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Learning.Models.Entities.DocumentType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DocumentTypes");
+                });
 
             modelBuilder.Entity("Learning.Models.Entities.Role", b =>
                 {
@@ -119,6 +138,8 @@ namespace Learning.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DocumentTypeId");
+
                     b.HasIndex("RoleId");
 
                     b.ToTable("user");
@@ -126,13 +147,26 @@ namespace Learning.Migrations
 
             modelBuilder.Entity("Learning.Models.Entities.User", b =>
                 {
+                    b.HasOne("Learning.Models.Entities.DocumentType", "DocumentType")
+                        .WithMany("Users")
+                        .HasForeignKey("DocumentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Learning.Models.Entities.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("DocumentType");
+
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("Learning.Models.Entities.DocumentType", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Learning.Models.Entities.Role", b =>
