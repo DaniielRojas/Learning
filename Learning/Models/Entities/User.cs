@@ -69,5 +69,6 @@ namespace Learning.Models.Entities
         [Column("deleted_at")]
         public DateTime? DeletedAt { get; set; }
 
+        public List<Course> Courses { get; set; }
     }
 }

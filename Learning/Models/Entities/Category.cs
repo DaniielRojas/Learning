@@ -4,17 +4,17 @@ using System.Text.Json.Serialization;
 
 namespace Learning.Models.Entities
 {
-    [Table("document_type")]
-    public class DocumentType
+    [Table("category")]
+    public class Category
     {
         [Key]
         [Column("id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set;}
-        
+        public int Id { get; set; }
+
         [Column("name")]
         [Required]
-        public string Name { get; set;}
+        public string Name { get; set; }
 
         [Column("created_at")]
         public DateTime CreatedAt { get; set; }
@@ -22,8 +22,7 @@ namespace Learning.Models.Entities
         [Column("updated_at")]
         public DateTime UpdatedAt { get; set; }
 
-        [JsonIgnore]
-        public List<User> Users { get; set;}
-    
+        public List<Course> Courses { get; set; } = new List<Course>();
+
     }
 }

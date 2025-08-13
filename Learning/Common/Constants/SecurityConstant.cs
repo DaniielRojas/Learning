@@ -18,6 +18,7 @@
         public const int EMAIL_MAX_LENGTH = 50;
         public const int DOCUMENT_NUMBER_MAX_LENGTH = 20;
         public const int ADRESS_MAX_LENGTH = 50;
+        public const int TITLE_MAX_LENGTH = 100;
 
         //password limits
         public const int PASSWORD_MIN_LENGTH = 8;

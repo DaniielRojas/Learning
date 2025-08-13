@@ -9,6 +9,8 @@ namespace Learning.Data
         {
             RoleSeeder.Seed(context);
             DocumentTypeSeeder.Seed(context);
+            CategorySeeder.Seed(context);
+            ConversationTypeSeeder.Seed(context);
             context.Database.Migrate();
         }
     }

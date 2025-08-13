@@ -32,6 +32,14 @@ namespace Learning
                 config.CreateMap<UserResponseDto, UpdateUserDto>();
                 config.CreateMap<UpdateUserDto, UserResponseDto>();
                
+                config.CreateMap<CreateCourseDto, Course>();
+                config.CreateMap<Course, CreateCourseDto>();
+                config.CreateMap<CreateCourseDto, CourseResponseDto>();
+                config.CreateMap<CourseResponseDto, CreateCourseDto>();
+                config.CreateMap<Course, CourseResponseDto>();
+              
+                
+
 
 
             });

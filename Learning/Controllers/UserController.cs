@@ -187,9 +187,18 @@ namespace Learning.Controllers
             }
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpDelete("delete/{id}")]
         public async Task<ActionResult<ResponseDto>> DeleteUser(int id)
         {
+            var userIdFromToken = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+            if (userIdFromToken != id)
+            {
+                _response.IsSuccess = false;
+                _response.DisplayMessage = "No tienes permiso para eliminar este usuario.";
+                _response.ErrorMessage = new List<string> { "Acceso denegado" };
+                return BadRequest(_response);
+            }
             try
             {
                 bool user = await _userRepos.DeleteUser(id);

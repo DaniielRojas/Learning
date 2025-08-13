@@ -48,6 +48,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 builder.Services.AddScoped<IUserRepos, UserRepos>();
 builder.Services.AddScoped<ILoginRepos, LoginRepos>();
+builder.Services.AddScoped<ICourseRepos, CourseRepos>();
 builder.Services.AddHttpContextAccessor();
 
 // CORS
@@ -80,12 +81,12 @@ using (var scope = app.Services.CreateScope())
         }
         else
         {
-            Console.WriteLine("⚠ No se pudo conectar a la base de datos en el arranque.");
+            Console.WriteLine("No se pudo conectar a la base de datos en el arranque.");
         }
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"⚠ Error inicializando datos: {ex}");
+        Console.WriteLine($" Error inicializando datos: {ex}");
     }
 }
 

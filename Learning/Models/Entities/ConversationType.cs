@@ -2,19 +2,20 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
+
 namespace Learning.Models.Entities
 {
-    [Table("document_type")]
-    public class DocumentType
+    [Table("conversation_type")]
+    public class ConversationType
     {
         [Key]
         [Column("id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set;}
-        
+        public int Id { get; set; }
+
         [Column("name")]
         [Required]
-        public string Name { get; set;}
+        public string Name { get; set; }
 
         [Column("created_at")]
         public DateTime CreatedAt { get; set; }
@@ -23,7 +24,6 @@ namespace Learning.Models.Entities
         public DateTime UpdatedAt { get; set; }
 
         [JsonIgnore]
-        public List<User> Users { get; set;}
-    
+        public List<Conversation> Conversations { get; set; }
     }
 }
